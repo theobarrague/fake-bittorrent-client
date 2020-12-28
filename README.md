@@ -1,33 +1,16 @@
 # Fake BitTorrent Client
 
-A Node.js BitTorrent API implementation for testing or cheating on trackers
+A Node.js BitTorrent API implementation for testing or cheating on trackers.
 
-## Getting Started
+All in name, this API will never upload or download data from peers, it will only notify tracker.
 
-These instructions will get you a copy of the project up and running on your local machine.
-
-### Prerequisites
-
-What things you need to install the software and how to install them on Mac OS X with Homebrew
+## Example
 
 ```
-$ brew install node
-```
+import { FakeBitTorrentClient } from 'fake-bittorrent-client';
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-$ npm run install
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-```
-const FakeBitTorrentClient = require('FakeBitTorrentClient');
+const trackerUrl = 'http://my.tracker.com:8080/announce';
+const torrentHash = 'ee8d8728f435fd550f83852aabab5234ce1da528';
 
 const client = new FakeBitTorrentClient(trackerUrl, torrentHash, options);
 
@@ -37,6 +20,18 @@ client
   .upload(bytes)
   .then(() => console.log(['Uploaded ', bytes, ' bytes to ', trackerUrl].join('')))
   .catch(err => console.error(['Error : ', err].join('')));
+
+client
+  .download(bytes)
+  .then(() => console.log(['Downloaded ', bytes, ' bytes from ', trackerUrl].join('')))
+  .catch(err => console.error(['Error : ', err].join('')));
+```
+
+```
+$ fake-bittorrent-client --tracker 'http://my.tracker.com:8080/announce' --hash 'ee8d8728f435fd550f83852aabab5234ce1da528' --upload 33554432
+Uploaded 33554432 bytes to http://my.tracker.com:8080/announce
+$ fake-bittorrent-client --tracker 'http://my.tracker.com:8080/announce' --hash 'ee8d8728f435fd550f83852aabab5234ce1da528' --download 33554432
+Downloaded 33554432 bytes from http://my.tracker.com:8080/announce
 ```
 
 ## Built With
@@ -44,10 +39,11 @@ client
 * [Atom](https://github.com/atom/atom) - The hackable text editord
 * [npm](https://github.com/npm/cli) - The package manager for JavaScript
 * [Node.js](https://github.com/nodejs/node) - Node.js JavaScript runtime ✨🐢🚀✨
+* [minimist](https://www.npmjs.com/package/minimist) - Parse argument options
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+All contributions are welcome, juste open a pull request.
 
 ## Versioning
 
@@ -62,9 +58,3 @@ See also the list of [contributors](https://github.com/theobarrague/fake-bittorr
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
