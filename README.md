@@ -4,13 +4,17 @@ A Node.js BitTorrent API implementation for testing or cheating on trackers.
 
 All in name, this API will never upload or download data from peers, it will only notify tracker.
 
-## Example
+## Usage
 
-```
+```js
 import { FakeBitTorrentClient } from 'fake-bittorrent-client';
 
 const trackerUrl = 'http://my.tracker.com:8080/announce';
 const torrentHash = 'ee8d8728f435fd550f83852aabab5234ce1da528';
+const options = {
+  peerId: '-DE13F0-ABCDEF', // Deluge 1.3.15
+  port: 31452 // Listen port ( for fake, API will never open a port )
+};
 
 const client = new FakeBitTorrentClient(trackerUrl, torrentHash, options);
 
@@ -30,6 +34,9 @@ client
 ```
 $ fake-bittorrent-client --tracker 'http://my.tracker.com:8080/announce' --hash 'ee8d8728f435fd550f83852aabab5234ce1da528' --upload 33554432
 Uploaded 33554432 bytes to http://my.tracker.com:8080/announce
+```
+
+```
 $ fake-bittorrent-client --tracker 'http://my.tracker.com:8080/announce' --hash 'ee8d8728f435fd550f83852aabab5234ce1da528' --download 33554432
 Downloaded 33554432 bytes from http://my.tracker.com:8080/announce
 ```
