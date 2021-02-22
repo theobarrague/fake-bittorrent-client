@@ -13,7 +13,10 @@ const trackerUrl = 'http://my.tracker.com:8080/announce';
 const torrentHash = 'ee8d8728f435fd550f83852aabab5234ce1da528';
 const options = {
   peerId: '-DE13F0-ABCDEF', // Deluge 1.3.15
-  port: 31452 // Listen port ( for fake, API will never open a port )
+  port: 31452, // Listen port ( for fake, API will never open a port )
+  timeout: 1500, // Optional
+  uploaded: 1024 * 16, // Optional, data "already" uploaded
+  downloaded: 1024 * 16 // Optinal, data "already" downloaded
 };
 
 const client = new FakeBitTorrentClient(trackerUrl, torrentHash, options);
@@ -32,18 +35,18 @@ client
 ```
 
 ```
-$ fake-bittorrent-client --tracker 'http://my.tracker.com:8080/announce' --hash 'ee8d8728f435fd550f83852aabab5234ce1da528' --upload 33554432
+$ fake-bittorrent-client --tracker 'http://my.tracker.com:8080/announce' --hash 'ee8d8728f435fd550f83852aabab5234ce1da528' --upload 33554432 --timeout 1500
 Uploaded 33554432 bytes to http://my.tracker.com:8080/announce
 ```
 
 ```
-$ fake-bittorrent-client --tracker 'http://my.tracker.com:8080/announce' --hash 'ee8d8728f435fd550f83852aabab5234ce1da528' --download 33554432
+$ fake-bittorrent-client --tracker 'http://my.tracker.com:8080/announce' --hash 'ee8d8728f435fd550f83852aabab5234ce1da528' --download 33554432 --timeout 1500
 Downloaded 33554432 bytes from http://my.tracker.com:8080/announce
 ```
 
 ## Built With
 
-* [Atom](https://github.com/atom/atom) - The hackable text editord
+* [Atom](https://github.com/atom/atom) - The hackable text editor
 * [npm](https://github.com/npm/cli) - The package manager for JavaScript
 * [Node.js](https://github.com/nodejs/node) - Node.js JavaScript runtime ✨🐢🚀✨
 * [minimist](https://www.npmjs.com/package/minimist) - Parse argument options
