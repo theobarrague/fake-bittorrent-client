@@ -15,7 +15,8 @@ if ( argv.download === undefined && argv.upload === undefined ) {
 
 const client = new FakeBitTorrentClient(
   argv.tracker,
-  argv.hash
+  argv.hash,
+  { timeout: argv.timeout }
 );
 
 if ( argv.upload ) {
