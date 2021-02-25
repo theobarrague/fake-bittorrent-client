@@ -58,18 +58,19 @@ export default class FakeBitTorrentClient {
         '&compact=1'
       ].join('');
 
+      let options = urlToHttpOptions(new URL(url));
+      options.timeout = timeout;
+      
       let handler = null;
       if (this.tracker.startsWith('http://')) {
         handler = http;
-      } else if (this.tracker.startsWith('https://')) {
+        options.agent = new http.Agent({keepAlive:true, keepAliveMsecs: timeout, timeout: timeout});
+     } else if (this.tracker.startsWith('https://')) {
         handler = https;
+        options.agent = new https.Agent({keepAlive:true, keepAliveMsecs: timeout, timeout: timeout});
       } else {
         throw 'Protocol not recognized';
       }
-
-      let options = urlToHttpOptions(new URL(url));
-      options.timeout = timeout;
-      options.agent = new http.Agent({keepAlive:true, keepAliveMsecs: timeout, timeout: timeout});
 
       let req = handler.get(options, res => {
         const { statusCode } = res;

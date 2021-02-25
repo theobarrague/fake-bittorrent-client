@@ -1,6 +1,6 @@
 {
   "name": "fake-bittorrent-client",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A Node JS BitTorrent API implementation for testing or cheating on trackers",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
