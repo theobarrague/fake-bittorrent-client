@@ -68,6 +68,9 @@ export default class FakeBitTorrentClient {
       }
 
       let options = urlToHttpOptions(new URL(url));
+      options.timeout = timeout;
+      options.agent = new http.Agent({keepAlive:true, keepAliveMsecs: timeout, timeout: timeout});
+
       let req = handler.get(options, res => {
         const { statusCode } = res;
         if (statusCode !== 200) {
@@ -79,7 +82,7 @@ export default class FakeBitTorrentClient {
         return reject(err);
       });
 
-      req.setTimeout(timeout, () => req.abort());
+      req.setTimeout(timeout, () => req.destroy());
     });
   }
 
