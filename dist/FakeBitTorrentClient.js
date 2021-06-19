@@ -42,7 +42,7 @@ var FakeBitTorrentClient = (function () {
                 _this.downloaded,
                 '&compact=1'
             ].join('');
-            var options = urlToHttpOptions(new URL(url));
+            var options = new URL(url)
             options.timeout = timeout;
             var handler = null;
             if (_this.tracker.startsWith('http://')) {
