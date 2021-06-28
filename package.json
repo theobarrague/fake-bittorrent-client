@@ -1,11 +1,11 @@
 {
   "name": "fake-bittorrent-client",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A Node JS BitTorrent API implementation for testing or cheating on trackers",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "fake-bittorrent-client": "./dist/cli.js"
+    "fake-bittorrent-client": "dist/cli.js"
   },
   "scripts": {
     "prepublish": "npm run build",
@@ -26,5 +26,13 @@
   },
   "dependencies": {
     "minimist": "^1.2.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/draeder/fake-bittorrent-client.git"
+  },
+  "bugs": {
+    "url": "https://github.com/draeder/fake-bittorrent-client/issues"
+  },
+  "homepage": "https://github.com/draeder/fake-bittorrent-client#readme"
 }
