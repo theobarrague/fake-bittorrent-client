@@ -61,7 +61,8 @@ I use [GitHub](https://github.com/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Théo BARRAGUÉ** - *Initial work* - [theobarrague](https://gist.github.com/theobarrague)
+* **Théo BARRAGUÉ** - *Initial work* - [theobarrague](https://github.com/theobarrague)
+* **Daniel RAEDER** - *Improvements* - [draeder](https://github.com/draeder)
 
 See also the list of [contributors](https://github.com/theobarrague/fake-bittorrent-client/graphs/contributors) who participated in this project.
 
